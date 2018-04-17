@@ -7,10 +7,8 @@
 
 makeCacheMatrix <- function(x = matrix()) {
         
-        
         ## First, inverse is set to NULL
         inv <- NULL
-        
         
         
         
@@ -22,22 +20,18 @@ makeCacheMatrix <- function(x = matrix()) {
         
         
         
-        
         ## getm() : gets the matrix values
         getm <- function() x
         
         
         
-        
         ## setinv() : stores the inverse in memory
-        setinv <- function(invers) inv <<- invers
-        
+        setinv <- function(INVS) inv <<- INVS
         
         
         
         ## getinv() : gets the inverse from the memory cache
         getinv <- function() inv
-        
         
         
         

@@ -35,7 +35,7 @@ makeCacheMatrix <- function(x = matrix()) {
         
         
         
-        ## The 4 functions are returned by as list elements
+        ## The 4 functions are returned as list elements
         list(setm = setm, getm = getm, setinv = setinv, getinv = getinv)
 }
 

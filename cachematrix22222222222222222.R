@@ -43,15 +43,15 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## cacheSolve() works as follows
-##      (1)  First it checks if inverse exists, and returns it if inverse exists
-##      (2)  If inverse doesnot exist, it checks if it is a square-matrix
-##      (3)  If it is not a square matrix, then inverse is not calculated.
-##      (4)  If it is a square-matrix, then inverse is calculated and stored in memory.
+##      (1)  It checks if inverse exists, and returns if inverse exists
+##      (2)  If inverse doesnot exist, then it calculates and stores the inverse in memory
 
 cacheSolve <- function(x, ...) {
         
         
         ## First check whether inverse exists or not
+        ## Return the inverse if it exists
+        ## Otherwise proceed further to calculation
         
         IN <- x$getinv()
         if(!is.null(IN)) {
@@ -62,31 +62,14 @@ cacheSolve <- function(x, ...) {
         
         
         
-        ## Now check whether the matrix is square-matrix or not
-        ## This is done by getting the matrix diemensions, using dim()
+        ## Call the solve() function to calculate inverse
+        ## Set the inverse to memory to be cached later
+        ## Print an appropriate message.
         
-        DIMS <- dim(x$getm())
-        if(DIMS[1] != DIMS[2]) {
-                message("Matrix diemensions are unequal. Inverse cannot be calculated.")
-                return(NULL)
-        }
+        IN <- solve(data, ...)
+        x$setinv(IN)
+        message("Calculation finished. Inverse can now be cached from memory.")
         
-        
-        
-        
-        ## Calculates the Determinant of matrix to see if it is invertible or not
-        ## Determinant is calculated using det()
-        
-        data <- x$getm()
-        DT <- det(data, ...)
-        if(DT == 0) {
-                message("Determinant is '0'. Inverse cannot be calculated.")
-        }
-        else {
-                IN <- solve(data, ...)
-                x$setinv(IN)
-                message("Calculation finished. Inverse can now be cached from memory.")
-        }
         
         
         ## Returns the inverse

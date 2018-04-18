@@ -7,9 +7,8 @@
 
 makeCacheMatrix <- function(x = matrix()) {
         
-        ## First, inverse is set to NULL
+        ## First, the inverse is set to NULL
         inv <- NULL
-        
         
         
         ## setm() : resets the matrix to new values
@@ -19,20 +18,16 @@ makeCacheMatrix <- function(x = matrix()) {
         }
         
         
-        
         ## getm() : gets the matrix values
         getm <- function() x
-        
         
         
         ## setinv() : stores the inverse in memory
         setinv <- function(INVS) inv <<- INVS
         
         
-        
         ## getinv() : gets the inverse from the memory cache
         getinv <- function() inv
-        
         
         
         ## The 4 functions are returned as list elements
@@ -47,7 +42,6 @@ makeCacheMatrix <- function(x = matrix()) {
 ##      (2)  If inverse doesnot exist, then it calculates and stores the inverse in memory
 
 cacheSolve <- function(x, ...) {
-        
         
         ## First check whether inverse exists or not
         ## Return the inverse if it exists
